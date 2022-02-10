@@ -1,12 +1,9 @@
 import React from "react";
 import "./App.css";
+import { InputComponent } from "./components/InputComponent";
 
 function App() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <InputComponent />;
 }
 
 export default App;
