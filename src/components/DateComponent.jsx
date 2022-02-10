@@ -1,4 +1,6 @@
-export function DateComponent(props) {
+import { Heading, HStack, Text } from "@chakra-ui/react";
+
+export function DateComponent() {
   const d = new Date();
   const weekDay = [
     "Sunday",
@@ -28,5 +30,24 @@ export function DateComponent(props) {
   const date = d.getDate();
   const year = d.getFullYear();
 
-  return <p>{day}</p>;
+  return (
+    <>
+      <div>
+        <div>
+          <Heading fontSize="45px">{day}</Heading>
+          <HStack paddingTop="25px" spacing="4px">
+            <Text fontSize="25px" as="sup">
+              {date}
+            </Text>
+            <Text fontSize="25px" as="sup">
+              {month}
+            </Text>
+            <Text fontSize="25px" as="sup">
+              {year}
+            </Text>
+          </HStack>
+        </div>
+      </div>
+    </>
+  );
 }
