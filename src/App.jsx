@@ -1,9 +1,28 @@
 import React from "react";
 import "./App.css";
-import { InputComponent } from "./components/InputComponent";
+import { Grid } from "@chakra-ui/react";
+import { PurpleBoxComponent } from "./components/PurpleBoxComponent";
+import { DarkBoxComponent } from "./components/DarkBoxComponent";
 
 function App() {
-  return <InputComponent />;
+  return (
+    <Grid
+      as="main"
+      height="100vh"
+      templateColumns="1fr 480px 480px 1fr"
+      templateRows="1fr 480px 1fr"
+      templateAreas="
+      '. . . .'
+      '. temp input .'
+      '. . . .'
+      "
+      justifyContent="center"
+      alignItems="center"
+    >
+      <PurpleBoxComponent />
+      <DarkBoxComponent />
+    </Grid>
+  );
 }
 
 export default App;
