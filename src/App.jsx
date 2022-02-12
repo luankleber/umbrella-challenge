@@ -12,8 +12,6 @@ import {
   Image,
   Center,
   Link,
-  LinkBox,
-  LinkOverlay,
   Icon,
 } from "@chakra-ui/react";
 import { InputComponent } from "./components/InputComponent";
@@ -22,8 +20,10 @@ import { DateComponent } from "./components/DateComponent.jsx";
 import { FiMapPin } from "react-icons/fi";
 import { AiFillAmazonCircle } from "react-icons/ai";
 import { SiAirbnb } from "react-icons/si";
+import { TwitterPicker } from "react-color";
 
 function App() {
+  const [selectedColor, setSelectedColor] = useState("blue.500");
   const [tempAPI, setTempAPI] = useState("0");
   const [nameAPI, setNameAPI] = useState("");
   const [countryAPI, setCountryAPI] = useState("");
@@ -81,7 +81,7 @@ function App() {
           <Text as="abbr" fontSize="20px">
             It's raining outside, take an umbrella if you're going out.
           </Text>
-          <Center bg="blue.600" h="30px" w="160px" borderRadius="8px">
+          <Center bg="#0000004D" h="30px" w="160px" borderRadius="8px">
             <Text>
               <Link
                 href="https://www.amazon.com/umbrella/s?k=umbrella"
@@ -100,14 +100,20 @@ function App() {
           It's snowing outside, don't forget your scarf and gloves.
         </Text>
       );
+    } else if (parseInt(numberID) === 7) {
+      return (
+        <Text as="abbr" fontSize="20px">
+          The weather presents some atmospheric conditions, be careful when
+          going out.
+        </Text>
+      );
     } else if (parseInt(numberID) === 8) {
       return (
         <Stack>
           <Text as="abbr" fontSize="20px">
-            The weather is perfect for walking, traveling or discovering new
-            things.
+            The sky is perfect for walking, traveling or discovering new things.
           </Text>
-          <Center bg="blue.600" h="30px" w="250px" borderRadius="8px">
+          <Center bg="#0000004D" h="30px" w="250px" borderRadius="8px">
             <HStack>
               <Text>
                 <Link
@@ -142,7 +148,7 @@ function App() {
       <Flex
         gridArea="temp"
         height="110%"
-        backgroundColor="blue.500"
+        backgroundColor={selectedColor}
         borderRadius="2xl"
         flexDir="column"
         alignItems="stretch"
@@ -210,7 +216,7 @@ function App() {
               {pressureAPI} hPa
             </Text>
           </HStack>
-          <HStack paddingTop="5px">
+          <HStack>
             <Heading textTransform="uppercase" size="md">
               Wind Speed
             </Heading>
@@ -220,6 +226,20 @@ function App() {
             </Text>
           </HStack>
         </Box>
+        <Center
+          margin="20px"
+          borderRadius="8px"
+          width="398px"
+          padding="10px"
+          backgroundColor="gray.800"
+        >
+          <TwitterPicker
+            color={selectedColor}
+            onChangeComplete={(color) => setSelectedColor(color.hex)}
+            triangle="hide"
+            width="398px"
+          />
+        </Center>
       </Flex>
     </Grid>
   );
