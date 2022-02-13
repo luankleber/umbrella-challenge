@@ -2,7 +2,7 @@ import { Button, HStack, Input } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 
-export function InputComponent() {
+export function InputComponent(props) {
   const [city, setCity] = useState("");
   const API_KEY = "845ecb59815a2ec959a194d1e002cabc";
 
@@ -12,7 +12,7 @@ export function InputComponent() {
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
       )
       .then((response) => {
-        console.log(response.data);
+        props.dataAPI(response.data);
       });
   }
 
